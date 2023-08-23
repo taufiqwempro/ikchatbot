@@ -43,10 +43,11 @@ To use this package, add `ikchatbot` to your `pubspec.yaml` file:
 dependencies:
   ikchatbot: ^1.0.0
 ```
+```yaml
 import 'package:flutter/material.dart';
 import 'package:ikchatbot/ikChatBot.dart';
 import 'keywords.dart';
-
+```
 
 final chatBotConfig = IkChatBotConfig(
     userIcon: const Icon(Icons.person, color: Colors.white),
