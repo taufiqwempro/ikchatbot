@@ -42,19 +42,11 @@ To use this package, add `ikchatbot` to your `pubspec.yaml` file:
 ```yaml
 dependencies:
   ikchatbot: ^1.0.0
-
-
-==============================================================================
-IMPORT THE PACKAGES
-==============================================================================
-
+```
 import 'package:flutter/material.dart';
 import 'package:ikchatbot/ikChatBot.dart';
 import 'keywords.dart';
 
-==============================================================================
-CALL THE FUNCTION FROM USING THIS.
-==============================================================================
 
 final chatBotConfig = IkChatBotConfig(
     userIcon: const Icon(Icons.person, color: Colors.white),
@@ -89,10 +81,6 @@ home: MyHomePage(chatBotConfig: chatBotConfig),
   );
 }
 }
-
-============================================================================== 
-INTEGRATE THE CHATBOT INTO YOUR APP
-==============================================================================
 
 class MyHomePage extends StatefulWidget {
   final IkChatBotConfig chatBotConfig;
