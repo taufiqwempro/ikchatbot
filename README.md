@@ -58,7 +58,7 @@ dependencies:
 ```
 ```yaml
 import 'package:flutter/material.dart';
-import 'package:ikchatbot/ikChatBot.dart';
+import 'package:ikchatbot/ikchatbot.dart';
 import 'keywords.dart';
 ```
 ```yaml
