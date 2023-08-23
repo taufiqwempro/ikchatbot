@@ -58,7 +58,7 @@ final chatBotConfig = IkChatBotConfig(
     botIcon: const Icon(Icons.android, color: Colors.white),
     botChatColor: const Color.fromARGB(255, 81, 80, 80),
     closingTime: 5, // in minutes
-    delayResponse: 5, // in minutes
+    delayResponse: 5, // in secods
     userChatColor: Colors.blue,
     waitingTime: 5, // in minutes
     keywords: keywords,
