@@ -11,12 +11,13 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+ikChatBot Flutter Package
+
+The ikChatBot Flutter package provides an easy way to integrate a customizable chatbot into your Flutter applications. This package allows you to quickly add a chat interface with interactive responses and user-friendly configuration options. With ikChatBot, you can enhance user engagement and provide automated assistance through a chat-based interface.
+
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
 
@@ -35,6 +36,9 @@ The `ikChatBot` package provides a customizable chatbot widget for Flutter appli
 - Placeholder for user input
 - Easy integration into Flutter apps
 
+
+Whether you're building a customer support app or just looking to add some interactivity to your application, ikChatBot can help you create a dynamic chatbot experience tailored to your needs.
+
 ## Getting Started
 
 To use this package, add `ikchatbot` to your `pubspec.yaml` file:
@@ -48,7 +52,7 @@ import 'package:flutter/material.dart';
 import 'package:ikchatbot/ikChatBot.dart';
 import 'keywords.dart';
 ```
-
+```yaml
 final chatBotConfig = IkChatBotConfig(
     userIcon: const Icon(Icons.person, color: Colors.white),
     botIcon: const Icon(Icons.android, color: Colors.white),
@@ -67,8 +71,26 @@ final chatBotConfig = IkChatBotConfig(
     closingMessage: "This conversation will now close.",
     inputHint: 'Send a message',
 );
+```
 
+Create a class to hold your keywords and resoponse for the bot
+```yaml
+final List<String> keywords = [
+  'who are you',
+  'what is flutter',
+  'fuck',
+  'sorry'
+];
 
+final List<String> responses = [
+  'I am a bot created by Iksoft Original, a proud Ghanaian',
+  'Flutter transforms the app development process. Build, test, and deploy beautiful mobile, web, desktop, and embedded apps from a single codebase.',
+  'You are such an idiot to tell me this. you dont have future. Look for Iksoft Original and seek for knowledge. here is his number +233550138086. call him you lazy deep shit',
+  'Good! i have forgiven you. dont do that again!'
+];
+```
+
+```yaml
   class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
