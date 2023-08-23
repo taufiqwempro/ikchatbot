@@ -18,6 +18,18 @@ The ikChatBot Flutter package provides an easy way to integrate a customizable c
 
 ## Features
 
+![Screenshot_1692811715](https://github.com/iksoft/ikchatbot/assets/62053085/3651c184-d70b-432a-a387-25a87b7128cd)
+
+![Screenshot_1692812340](https://github.com/iksoft/ikchatbot/assets/62053085/62039c04-c9ec-4264-b9ef-97d2aac7d502)
+
+![Screenshot_1692812345](https://github.com/iksoft/ikchatbot/assets/62053085/27608f5b-7f87-4211-ab03-cb4eba95fff9)
+
+![Screenshot_1692812351](https://github.com/iksoft/ikchatbot/assets/62053085/29047cea-c895-4521-a32f-041258f3c8a8)
+
+![Screenshot_1692812357](https://github.com/iksoft/ikchatbot/assets/62053085/be15065f-0ca4-4d3f-8567-928204e61150)
+
+![Screenshot_1692812371](https://github.com/iksoft/ikchatbot/assets/62053085/02ef884b-3b91-4dda-97b5-dace0e2ad8c7)
+
 
 ## Getting started
 
