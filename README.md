@@ -17,14 +17,13 @@ The ikChatBot Flutter package provides an easy way to integrate a customizable c
 
 
 ## Features
-
+![thumbnail](https://github.com/iksoft/ikchatbot/assets/62053085/bdf6530e-475a-424f-a065-b60cfe8bcdc7)
 <div align="center">
     <img src="https://github.com/iksoft/ikchatbot/assets/62053085/3651c184-d70b-432a-a387-25a87b7128cd" alt="Screenshot 1" width="200"/>
     <img src="https://github.com/iksoft/ikchatbot/assets/62053085/62039c04-c9ec-4264-b9ef-97d2aac7d502" alt="Screenshot 2" width="200"/>
-    <img src="https://github.com/iksoft/ikchatbot/assets/62053085/27608f5b-7f87-4211-ab03-cb4eba95fff9" alt="Screenshot 3" width="200"/>
-    <img src="https://github.com/iksoft/ikchatbot/assets/62053085/29047cea-c895-4521-a32f-041258f3c8a8" alt="Screenshot 4" width="200"/>
-    <img src="https://github.com/iksoft/ikchatbot/assets/62053085/be15065f-0ca4-4d3f-8567-928204e61150" alt="Screenshot 5" width="200"/>
-    <img src="https://github.com/iksoft/ikchatbot/assets/62053085/02ef884b-3b91-4dda-97b5-dace0e2ad8c7" alt="Screenshot 6" width="200"/>
+    <img src="https://github.com/iksoft/ikchatbot/assets/62053085/8d675799-4fe0-4ff0-b6f6-7dadf64e0502" alt="Screenshot 2" width="200"/>
+    <img src="https://github.com/iksoft/ikchatbot/assets/62053085/6a598e63-091d-433e-982e-42cb8561c9ee" alt="Screenshot 2" width="200"/>
+   
 </div>
 
 
@@ -44,6 +43,10 @@ The `ikChatBot` package provides a customizable chatbot widget for Flutter appli
 - Initial greeting and default responses
 - Placeholder for user input
 - Easy integration into Flutter apps
+- Add Rating to your Chat Bot
+- Send Rating feedback to your Mail
+- Use SMTP for secure Mail Sending
+- Use Bot typing.. features
 
 
 Whether you're building a customer support app or just looking to add some interactivity to your application, ikChatBot can help you create a dynamic chatbot experience tailored to your needs.
@@ -54,31 +57,55 @@ To use this package, add `ikchatbot` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  ikchatbot: ^1.0.0
+  ikchatbot: ^1.0.2
 ```
+Import the package to your screen
 ```yaml
-import 'package:flutter/material.dart';
 import 'package:ikchatbot/ikchatbot.dart';
-import 'keywords.dart';
 ```
+Copy and Paste this fuction to use the features of the plugin
 ```yaml
 final chatBotConfig = IkChatBotConfig(
+    //SMTP Rating to your mail Settings
+    ratingIconYes: const Icon(Icons.star),
+    ratingIconNo: const Icon(Icons.star_border),
+    ratingIconColor: Colors.black,
+    ratingBackgroundColor: Colors.white,
+    ratingButtonText: 'Submit Rating',
+    thankyouText: 'Thanks for your rating!',
+    ratingText: 'Rate your experience:',
+    ratingTitle: 'Thank you for using the chatbot!',
+    body: 'This is a test email sent from Flutter and Dart.',
+    subject: 'Test Rating',
+    recipient: 'recipient@example.com',
+    isSecure: false,
+    senderName: 'Your Name',
+    smtpUsername: 'Your Email',
+    smtpPassword: 'your password',
+    smtpServer: 'stmp.gmail.com',
+    smtpPort: 587,
+    //Settings to your system Configurations
+    sendIcon: const Icon(Icons.send, color: Colors.black),
     userIcon: const Icon(Icons.person, color: Colors.white),
     botIcon: const Icon(Icons.android, color: Colors.white),
     botChatColor: const Color.fromARGB(255, 81, 80, 80),
-    closingTime: 5, // in minutes
-    delayResponse: 5, // in secods
+    delayBot: 100,
+    closingTime: 1,
+    delayResponse: 1,
     userChatColor: Colors.blue,
-    waitingTime: 5, // in minutes
+    waitingTime: 1,
     keywords: keywords,
     responses: responses,
     backgroundColor: Colors.white,
     backgroundImageUrl: 'https://cdn.wallpapersafari.com/54/0/HluF7g.jpg',
-    initialGreeting: "👋 Hello! \nWelcome to IkBot\nHow can I assist you today?",
+    initialGreeting:
+    "👋 Hello! \nWelcome to IkBot\nHow can I assist you today?",
     defaultResponse: "Sorry, I didn't understand your response.",
     inactivityMessage: "Is there anything else you need help with?",
     closingMessage: "This conversation will now close.",
     inputHint: 'Send a message',
+    waitingText: 'Please wait...',
+  );
 );
 ```
 
@@ -99,47 +126,98 @@ final List<String> responses = [
 ];
 ```
 
+Full Example on how to use this plugin
 ```yaml
-  class MyApp extends StatelessWidget {
+import 'package:example/response.dart';
+import 'package:flutter/material.dart';
+import 'package:ikchatbot/ikchatbot.dart';
+
+import 'keywords.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-  return MaterialApp(
-title: 'ikChatBot Demo',
-theme: ThemeData(
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-  useMaterial3: true,
-  ),
-home: MyHomePage(chatBotConfig: chatBotConfig),
-  );
-}
+
+
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: MyHomePage(),
+    );
+  }
 }
 
 class MyHomePage extends StatefulWidget {
-  final IkChatBotConfig chatBotConfig;
-
-const MyHomePage({Key? key, required this.chatBotConfig}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-  class _MyHomePageState extends State<MyHomePage> {
-  bool _chatIsOpened = false;
+class _MyHomePageState extends State<MyHomePage> {
+  final chatBotConfig = IkChatBotConfig(
+    //SMTP Rating to your mail Settings
+    ratingIconYes: const Icon(Icons.star),
+    ratingIconNo: const Icon(Icons.star_border),
+    ratingIconColor: Colors.black,
+    ratingBackgroundColor: Colors.white,
+    ratingButtonText: 'Submit Rating',
+    thankyouText: 'Thanks for your rating!',
+    ratingText: 'Rate your experience:',
+    ratingTitle: 'Thank you for using the chatbot!',
+    body: 'This is a test email sent from Flutter and Dart.',
+    subject: 'Test Rating',
+    recipient: 'recipient@example.com',
+    isSecure: false,
+    senderName: 'Your Name',
+    smtpUsername: 'Your Email',
+    smtpPassword: 'your password',
+    smtpServer: 'stmp.gmail.com',
+    smtpPort: 587,
+    //Settings to your system Configurations
+    sendIcon: const Icon(Icons.send, color: Colors.black),
+    userIcon: const Icon(Icons.person, color: Colors.white),
+    botIcon: const Icon(Icons.android, color: Colors.white),
+    botChatColor: const Color.fromARGB(255, 81, 80, 80),
+    delayBot: 100,
+    closingTime: 1,
+    delayResponse: 1,
+    userChatColor: Colors.blue,
+    waitingTime: 1,
+    keywords: keywords,
+    responses: responses,
+    backgroundColor: Colors.white,
+    backgroundImageUrl: 'https://cdn.wallpapersafari.com/54/0/HluF7g.jpg',
+    initialGreeting:
+    "👋 Hello! \nWelcome to IkBot\nHow can I assist you today?",
+    defaultResponse: "Sorry, I didn't understand your response.",
+    inactivityMessage: "Is there anything else you need help with?",
+    closingMessage: "This conversation will now close.",
+    inputHint: 'Send a message',
+    waitingText: 'Please wait...',
+  );
 
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      centerTitle: true,
-      title: const Text('ikChatBot Example'),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('ikChatBot Example'),
       ),
-       body: _chatIsOpened
-          ? Center(
-            child: Text('Welcome to my app'),
-          ) : IkChatBot(config: widget.chatBotConfig),
+      body: IkChatBot(config: chatBotConfig),
     );
   }
 }
+
 
 ```
 
@@ -150,6 +228,6 @@ To find more information, check out the package documentation.
 Contributions are welcome! If you'd like to contribute to this package, please submit issues or pull requests on GitHub.
 
 
-If you encounter any issues or need support, feel free to file issues on GitHub or contact us at support@afrilen.com.
+If you encounter any issues or need support, feel free to file issues on GitHub or contact us at iksofttechnologiesgh@gmail.com.
 
 Our team will do their best to respond promptly to issues and inquiries.
