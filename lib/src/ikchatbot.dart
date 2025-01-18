@@ -231,12 +231,12 @@ class _IkChatBotState extends State<IkChatBot> {
                 ),
               ),
             ),
-            IconButton(
+            _isWaitingForUserResponse?  IconButton(
               icon: const Icon(Icons.send),
               onPressed: () {
-                _handleSubmitted(_textController.text);
+                _isWaitingForUserResponse? _handleSubmitted(_textController.text):null;
               },
-            ),
+            ):SizedBox(),
           ],
         ),
       ),
