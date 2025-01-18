@@ -6,8 +6,8 @@ class ChatMessage extends StatelessWidget {
   final DateTime messageTime;
   final Color botColor;
   final Color userColor;
-  final Icon botIcon;
-  final Icon userIcon;
+  final Widget botIcon;
+  final Widget userIcon;
 
   const ChatMessage({
     required this.text,

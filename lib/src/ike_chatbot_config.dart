@@ -15,8 +15,8 @@ class IkChatBotConfig {
   int waitingTime;
   int closingTime;
   int delayResponse;
-  final Icon botIcon;
-  final Icon userIcon;
+  final Widget botIcon;
+  final Widget userIcon;
 
   IkChatBotConfig({
     required this.keywords,
