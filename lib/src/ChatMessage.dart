@@ -77,13 +77,13 @@ class ChatMessage extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0),
-          child: Text(
-            "${messageTime.hour}:${messageTime.minute}:${messageTime.second}",
-            style: const TextStyle(color: Colors.grey),
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        //   child: Text(
+        //     "${messageTime.hour}:${messageTime.minute}:${messageTime.second}",
+        //     style: const TextStyle(color: Colors.grey),
+        //   ),
+        // ),
       ],
     );
   }
