@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final chatBotConfig = IkChatBotConfig(
       userIcon: const Icon(Icons.person,color: Colors.white,),
-      botIcon: const Icon(Icons.android,color: Colors.white,),
+      botIcon:  Image.asset("assets/appIcon.png"),
       botChatColor: const Color.fromARGB(255, 81, 80, 80),
       closingTime: 5, //This is calculated in minutes
       delayResponse: 5, //This is calculated in minutes
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       defaultResponse: "Sorry, I didn't understand your response.",
       inactivityMessage: "Is there anything else you need help with?",
       closingMessage: "This conversation will now close.",
-      inputHint: 'Send a message',
+      inputHint: 'Send a message', chatTextColor: Colors.black,
     );
 
     return MaterialApp(

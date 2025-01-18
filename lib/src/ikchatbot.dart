@@ -218,6 +218,7 @@ class _IkChatBotState extends State<IkChatBot> {
           children: [
             Flexible(
               child: TextField(
+                style: TextStyle(color: widget.config.chatTextColor),
                 controller: _textController,
                 onChanged: (text) {
                   if (!_isWaitingForUserResponse) {
@@ -225,6 +226,7 @@ class _IkChatBotState extends State<IkChatBot> {
                   }
                 },
                 decoration: InputDecoration.collapsed(
+
                   hintText: widget.config.inputHint, // Use input hint from the config
                 ),
               ),

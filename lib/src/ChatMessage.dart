@@ -36,9 +36,9 @@ class ChatMessage extends StatelessWidget {
                  Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CircleAvatar(
-                    backgroundColor: userColor,
+                    // backgroundColor: userColor,
                     radius: 20.0,
-                    child: botIcon,
+                    child: ClipOval(child: botIcon),
                   ),
                 ),
               Container(
