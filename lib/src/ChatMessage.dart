@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 class ChatMessage extends StatelessWidget {
   final String text;
   final bool isUser;
+  final bool showButton;
   final DateTime messageTime;
   final Color botColor;
   final Color userColor;
   final Widget botIcon;
   final Widget userIcon;
+  final List<VoidCallback> ?onPressedHandlers; // List of button handlers
+
+
 
   const ChatMessage({
     required this.text,
@@ -16,7 +20,7 @@ class ChatMessage extends StatelessWidget {
     required this.botIcon,
     required this.userIcon,
     required this.botColor,
-    required this.userColor,
+    required this.userColor, required this.showButton,  this.onPressedHandlers,
   });
 
   @override
@@ -60,9 +64,36 @@ class ChatMessage extends StatelessWidget {
                     bottomRight: Radius.circular(12.0),
                   ),
                 ),
-                child: Text(
-                  text,
-                  style: const TextStyle(color: Colors.white),
+                child: Column(
+                  crossAxisAlignment:
+                  CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      text,
+                      style:  TextStyle(color: Colors.black,fontSize: 12,fontWeight:showButton? FontWeight.w500:FontWeight.w400),
+                    ),
+                    SizedBox(height: 10,),
+                    if (showButton)
+                      Column(
+                        children: [
+                          _buildItemsButton(
+                            label: "Order Cancel",
+                            onPressed: onPressedHandlers![0], context: context
+                          ),
+                          _buildItemsButton(
+                            label: "Earnings and Tips",
+                            onPressed: onPressedHandlers![1],
+                              context: context
+                          ),
+                          _buildItemsButton(
+                            label: "Chat with Human",
+                            onPressed:onPressedHandlers![2],
+                              context: context
+                          ),
+                        ],
+                      ),
+
+                  ],
                 ),
               ),
               if (isUser)
@@ -87,4 +118,18 @@ class ChatMessage extends StatelessWidget {
       ],
     );
   }
+  Widget _buildItemsButton({required String label,required VoidCallback onPressed ,required BuildContext context}){
+    final height=MediaQuery.of(context).size.height;
+    final width=MediaQuery.of(context).size.width;
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+
+          fixedSize: Size(width * 0.6, height * 0.04), // Adjust height as before
+          padding: EdgeInsets.symmetric(vertical: 0.0),
+          minimumSize: Size(width * 0.6, height * 0.05),
+
+        ),
+        onPressed: onPressed, child: Text(label,style: TextStyle(color: Colors.black,fontSize: 11),));
+}
 }

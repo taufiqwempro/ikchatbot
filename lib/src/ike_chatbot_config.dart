@@ -18,6 +18,7 @@ class IkChatBotConfig {
   int delayResponse;
   final Widget botIcon;
   final Widget userIcon;
+  final VoidCallback onPressed;
 
   IkChatBotConfig({
     required this.keywords,
@@ -36,6 +37,7 @@ class IkChatBotConfig {
     required this.delayResponse,
     required this.botIcon,
     required this.userIcon,
-    required this.chatTextColor
+    required this.chatTextColor,
+    required this.onPressed
   });
 }

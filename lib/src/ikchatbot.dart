@@ -279,6 +279,20 @@ class _IkChatBotState extends State<IkChatBot> {
       text: widget.config.initialGreeting,
       isUser: false,
     );
+    _messages.add(ChatMessage(text: "Choose a quick response below:", isUser: true, messageTime: DateTime.now(), botIcon: widget.config.botIcon, userIcon: widget.config.userIcon, botColor: widget.config.botChatColor, userColor: widget.config.userChatColor, showButton: true,
+
+    onPressedHandlers: [
+      (){
+      _addMessage(text: widget.config.defaultResponse, isUser: false);
+      },
+      (){
+        _addMessage(text: widget.config.defaultResponse, isUser: false);
+
+      },
+      widget.config.onPressed
+    ],
+
+    ));
   }
 
   void _addMessage({required String text, required bool isUser}) {
@@ -290,7 +304,7 @@ class _IkChatBotState extends State<IkChatBot> {
         userIcon: widget.config.userIcon,
         text: text,
         isUser: isUser,
-        messageTime: DateTime.now(),
+        messageTime: DateTime.now(), showButton: false,
       ));
     });
   }
@@ -377,10 +391,11 @@ class _IkChatBotState extends State<IkChatBot> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(widget.config.backgroundImageUrl),
-            fit: BoxFit.cover,
-          ),
+          color: Color(0xFFF6F6F6)
+          // image: DecorationImage(
+          //   image: NetworkImage(widget.config.backgroundImageUrl),
+          //   fit: BoxFit.cover,
+          // ),
         ),
         child: Column(
           children: [
@@ -394,7 +409,7 @@ class _IkChatBotState extends State<IkChatBot> {
                 ),
               ),
             ),
-            const Divider(height: 1.0),
+            // const Divider(height: 1.0),
             if (_showTextField) _buildTextComposer(),
           ],
         ),
